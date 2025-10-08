@@ -120,40 +120,36 @@ export class SkillMatcher {
 
     // Greedy алгоритм: назначаем задачи по максимальному скору
     while (availableEmployees.length > 0 && availableTasks.length > 0) {
-      let bestMatch: {
-        employee: Employee
-        task: Task
-        matchScore: number
-        employeeIndex: number
-        taskIndex: number
-      } | null = null
+      let bestEmployee: Employee | null = null
+      let bestTask: Task | null = null
+      let bestScore = 0
+      let bestEmployeeIndex = -1
+      let bestTaskIndex = -1
 
       // Находим лучшее совпадение среди всех доступных комбинаций
       availableEmployees.forEach((employee, empIndex) => {
         availableTasks.forEach((task, taskIndex) => {
           const match = this.calculateMatch(employee, task)
-          if (!bestMatch || match.matchScore > bestMatch.matchScore) {
-            bestMatch = {
-              employee,
-              task,
-              matchScore: match.matchScore,
-              employeeIndex: empIndex,
-              taskIndex: taskIndex
-            }
+          if (match.matchScore > bestScore) {
+            bestEmployee = employee
+            bestTask = task
+            bestScore = match.matchScore
+            bestEmployeeIndex = empIndex
+            bestTaskIndex = taskIndex
           }
         })
       })
 
-      if (bestMatch && bestMatch.matchScore > 0) {
+      if (bestEmployee && bestTask && bestScore > 0) {
         assignments.push({
-          employee: bestMatch.employee,
-          task: bestMatch.task,
-          matchScore: bestMatch.matchScore
+          employee: bestEmployee,
+          task: bestTask,
+          matchScore: bestScore
         })
 
         // Удаляем назначенные элементы из доступных
-        availableEmployees.splice(bestMatch.employeeIndex, 1)
-        availableTasks.splice(bestMatch.taskIndex, 1)
+        availableEmployees.splice(bestEmployeeIndex, 1)
+        availableTasks.splice(bestTaskIndex, 1)
       } else {
         break
       }
