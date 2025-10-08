@@ -37,40 +37,40 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-3 md:mb-4 px-2">
             Skill
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               {" "}Matcher{" "}
             </span>
             PoC
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 px-4">
             System zur Aufgabenzuweisung für Mitarbeiter basierend auf ihren Fähigkeiten. 
             Proof of Concept zur Demonstration des Matching-Algorithmus.
           </p>
           
-          {/* Статистика */}
-          <div className="flex justify-center space-x-8 mb-8">
+          {/* Statistik */}
+          <div className="flex justify-center space-x-6 sm:space-x-8 mb-6 md:mb-8">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600">
                 {appState.employees.length}
               </div>
-              <div className="text-sm text-gray-600">Mitarbeiter</div>
+              <div className="text-xs sm:text-sm text-gray-600">Mitarbeiter</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-xl sm:text-2xl font-bold text-green-600">
                 {appState.tasks.length}
               </div>
-              <div className="text-sm text-gray-600">Aufgaben</div>
+              <div className="text-xs sm:text-sm text-gray-600">Aufgaben</div>
             </div>
           </div>
 
-          {/* Навигация */}
-          <div className="flex justify-center space-x-4 mb-8">
+          {/* Navigation */}
+          <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-6 md:mb-8 px-4">
             <button
               onClick={() => switchMode('employee')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all text-sm sm:text-base ${
                 appState.mode === 'employee'
                   ? 'bg-blue-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
@@ -80,7 +80,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => switchMode('employer')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all text-sm sm:text-base ${
                 appState.mode === 'employer'
                   ? 'bg-blue-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
@@ -90,7 +90,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => switchMode('dashboard')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all text-sm sm:text-base ${
                 appState.mode === 'dashboard'
                   ? 'bg-blue-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'

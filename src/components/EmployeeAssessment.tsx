@@ -112,8 +112,8 @@ export default function EmployeeAssessment({ onComplete }: EmployeeAssessmentPro
 
   if (isCompleted && skillProfile) {
     return (
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold text-green-600 mb-6 text-center">
+      <div className="max-w-2xl mx-auto bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
+        <h2 className="text-2xl sm:text-3xl font-bold text-green-600 mb-4 md:mb-6 text-center">
           Test abgeschlossen! 🎉
         </h2>
         
@@ -163,10 +163,10 @@ export default function EmployeeAssessment({ onComplete }: EmployeeAssessmentPro
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+    <div className="max-w-2xl mx-auto bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
       {/* Fortschrittsbalken */}
-      <div className="mb-6">
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
+      <div className="mb-4 md:mb-6">
+        <div className="flex justify-between text-xs sm:text-sm text-gray-600 mb-2">
           <span>Frage {currentQuestionIndex + 1} von {questionnaire.length}</span>
           <span>{Math.round(progress)}%</span>
         </div>
@@ -178,23 +178,23 @@ export default function EmployeeAssessment({ onComplete }: EmployeeAssessmentPro
         </div>
       </div>
 
-      {/* Вопрос */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+      {/* Frage */}
+      <div className="mb-6 md:mb-8">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 md:mb-6 leading-tight">
           {currentQuestion.text}
         </h2>
 
-        {/* Варианты ответов */}
-        <div className="space-y-3">
+        {/* Antwortoptionen */}
+        <div className="space-y-2 sm:space-y-3">
           {currentQuestion.options.map((option, index) => (
             <button
               key={index}
               onClick={() => handleAnswer(index)}
-              className="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full text-left p-3 sm:p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <div className="flex items-center">
-                <div className="w-6 h-6 border-2 border-gray-300 rounded-full mr-3 flex-shrink-0"></div>
-                <span className="text-gray-700">{option.text}</span>
+              <div className="flex items-start sm:items-center">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-gray-300 rounded-full mr-3 flex-shrink-0 mt-0.5 sm:mt-0"></div>
+                <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{option.text}</span>
               </div>
             </button>
           ))}

@@ -93,14 +93,14 @@ export default function EmployerDashboard({ tasks, onAddTask }: EmployerDashboar
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white p-8 rounded-2xl shadow-lg">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">
+      <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-3">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
             Arbeitgeber-Dashboard 💼
           </h2>
           <button
             onClick={() => setIsAddingTask(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base w-full sm:w-auto"
           >
             + Aufgabe hinzufügen
           </button>
@@ -108,8 +108,8 @@ export default function EmployerDashboard({ tasks, onAddTask }: EmployerDashboar
 
         {/* Aufgabe hinzufügen Formular */}
         {isAddingTask && (
-          <div className="mb-8 p-6 border border-gray-200 rounded-xl bg-gray-50">
-            <h3 className="text-xl font-semibold mb-4">Neue Aufgabe</h3>
+          <div className="mb-6 md:mb-8 p-4 sm:p-6 border border-gray-200 rounded-xl bg-gray-50">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">Neue Aufgabe</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -141,17 +141,17 @@ export default function EmployerDashboard({ tasks, onAddTask }: EmployerDashboar
                 <label className="block text-sm font-medium text-gray-700 mb-4">
                   Fähigkeitsgewichte (Summe: {Math.round(getTotalWeight() * 100)}%)
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {Object.keys(weights).map(category => {
                     const cat = category as SkillCategory
                     const percentage = Math.round(weights[cat] * 100)
                     return (
                       <div key={category} className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-sm font-medium">
+                          <span className="text-xs sm:text-sm font-medium">
                             {SkillCategoryNames[cat]}
                           </span>
-                          <span className="text-sm text-gray-600">
+                          <span className="text-xs sm:text-sm text-gray-600">
                             {percentage}%
                           </span>
                         </div>
@@ -172,17 +172,17 @@ export default function EmployerDashboard({ tasks, onAddTask }: EmployerDashboar
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
                   type="submit"
-                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
                 >
                   Aufgabe erstellen
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsAddingTask(false)}
-                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-6 rounded-lg transition-colors"
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
                 >
                   Abbrechen
                 </button>
